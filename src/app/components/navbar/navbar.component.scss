@@ -1,0 +1,33 @@
+header{
+    background-color: #fafafaff;
+    margin: 0;
+    padding: 1rem 0;
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    
+}
+
+.nav{
+    list-style-type: none;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    gap: 5rem;
+    padding: .5rem;
+    
+    &__item{
+        padding: .5rem;
+        border-radius: .5rem;
+    }
+
+    &__link{
+        color: #0f0f0f;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.4rem;
+    }
+}

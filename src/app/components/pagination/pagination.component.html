@@ -1,0 +1,57 @@
+<ul class="pagination">
+    <li *ngIf="startPage"
+        class="pagination__item">
+        <a class="pagination__link"
+            [routerLink]="startPage.route" 
+            [queryParams]="{
+                link: startPage.link
+            }"
+            (click)="onPageChange(startPage.link)">
+            {{startPage.number}}
+        </a>
+    </li>
+    <li *ngIf="previousPage"
+        class="pagination__item">
+        <a class="pagination__link"
+            [routerLink]="previousPage.route" 
+            [queryParams]="{
+                link: previousPage.link
+            }"
+            (click)="onPageChange(previousPage.link)">
+            {{previousPage.number}}
+        </a>
+    </li>
+    <li *ngIf="currentPage"
+        class="pagination__item__active">
+        <a class="pagination__link"
+            [routerLink]="currentPage.route" 
+            [queryParams]="{
+                link: currentPage.link
+            }"
+            (click)="onPageChange(currentPage.link)">
+            {{currentPage.number}}
+        </a>
+    </li>
+    <li *ngIf="nextPage"
+        class="pagination__item">
+        <a class="pagination__link"
+            [routerLink]="nextPage.route"
+            [queryParams]="{
+                link: nextPage.link
+            }"
+            (click)="onPageChange(nextPage.link)">
+            {{nextPage.number}}
+        </a>
+    </li>
+    <li *ngIf="lastPage"
+        class="pagination__item">
+        <a class="pagination__link"
+            [routerLink]="lastPage.route" 
+            [queryParams]="{
+                link: lastPage.link
+            }"
+            (click)="onPageChange(lastPage.link)">
+            {{lastPage.number}}
+        </a>
+    </li>
+</ul>

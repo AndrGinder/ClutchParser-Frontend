@@ -1,0 +1,173 @@
+.profile{
+    margin: 6.4rem 1rem .5rem 1rem;
+    padding: 0;
+
+    &__title{
+        font-size: 2.6rem;
+        text-align: center;
+    }
+
+    &__location{
+        font-size: 1.8rem;
+        text-align: center;
+        gap: 0.5rem;
+
+        &__img{
+            width: 1.8rem;
+        }
+    }
+}
+
+.review{
+
+    &__title{
+        margin: 0;
+        padding: 0;
+        font-size: 2.2rem;
+        text-align: center;
+    }
+
+    &__item{
+        border: .1rem solid #000000F5;
+        border-radius: .75rem;
+
+        &__header{
+            background-color: #000000F5;
+            color: #fff;
+            padding: 1rem;
+            font-size: 1.8rem;
+            text-align: center;
+            border-radius: .5rem .5rem 0 0;
+        }
+
+        &__content{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+            margin: 1rem 1rem 0.5rem 1rem;
+        }
+    }
+
+    &__rating{
+        font-size: 1.4rem;
+        border: .1rem solid #000000F5;
+
+        &__summary{
+            font-size: 1.6rem;
+            gap: 2rem;
+            padding: .5rem 0;
+        }
+
+        &__title{
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        &__mark{
+            font-size: 1.4rem;
+            font-weight: normal;
+            text-align: center;
+        }
+
+        &__full{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+            border-top: .1rem solid #000000F5;
+
+            &__block{
+                display: grid;
+                grid-template-columns: repeat(2, .5fr);
+                column-gap: .5rem;
+                
+            }
+        }
+    }
+
+    &__author{
+
+        &__title{
+            font-size: 1.6rem;
+            text-align: center;
+
+            h5{
+                font-weight: bold;
+            }
+            h6{
+                font-size: 1.4rem;
+                font-weight: normal;
+            }
+        }
+
+        &__person{
+            margin: 1rem 0;
+        }
+
+        &__avatar{
+            width: 2rem;
+            border-radius: 50%;
+            border: .1rem solid #000000F5;
+            padding: 0.5rem;
+        }
+
+        &__name{
+            font-size: 1.4rem;
+            text-align: center;
+        }
+
+        &__img{
+            width: 1.6rem;
+        }
+
+        &__text{
+            font-size: 1.2rem;
+        }
+    }
+
+    &__summary{
+        padding: .5rem 1rem;
+        font-size: 1.2rem;
+
+        &__content{
+            padding: .5rem 0;
+        }
+
+        &__title{
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-left: 1rem;
+        }
+
+        &__text{
+            font-weight: normal;
+        }
+    }
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+
+    &__gap{
+        gap: .5rem;
+    }
+
+    &__space{
+        margin: .25rem;
+    }
+}
+
+.space{
+    margin: .5rem 0;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+}
+
+.center{
+    justify-content: center;
+    align-items: center;
+}

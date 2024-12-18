@@ -1,0 +1,83 @@
+<navbar (pageChange)="onPageChange($event)"></navbar>
+
+<article class="company" *ngIf="page">
+
+    <h1 class="company__title space">{{page.title}}</h1>
+
+    <div class="space center column">
+        <div class="company__location">
+            <a class="company__location__select center" (click)="onClickDropdown()">
+                <span>Choose companies location</span>
+                <img *ngIf="!dropStatus" class="company__location__select__img" 
+                    src="../../../assets/header/expand.png"
+                    srcset="../../../assets/header/expand.png">
+                <img *ngIf="dropStatus" class="company__location__select__img"
+                    src="../../../assets/header/collapse.png"
+                    srcset="../../../assets/header/collapse.png">
+            </a>
+            <ng-container *ngIf="dropStatus">
+                <locationBar [links]="links" (pageChange)="onPageChange($event)"></locationBar>
+            </ng-container>
+        </div>
+    </div>
+
+    <h2 class="company__subtitle space">
+        {{subtitle}}
+    </h2>
+
+    <div>
+        
+    </div>
+    <div class="company__item space" *ngFor="let company of page.companies"> 
+        <div class="company__item__header space">
+            <h4 class="company__item__title">
+                {{company.name}}
+            </h4>
+            <div class="company__item__profile center">
+                <a class="company__item__link" 
+                    [routerLink]='profile' 
+                    [queryParams]="{
+                        link: company.profileLink 
+                    }">
+                    View Profile
+                </a>
+            </div>
+        </div>
+
+        <div class="company__item__content space">
+            <div class="center column">
+                <h5 class="company__item__rating space row">
+                    <ng-container *ngIf="company.mark > 0">
+                        <span class="company__item__rating__title">Mark</span>
+                        <span class="company__item__rating__mark">{{company.mark}}</span>
+                    </ng-container>
+                    <ng-container *ngIf="company.mark == 0">
+                        <span class="company__item__rating__title">Not yet reviewed</span>
+                    </ng-container>
+                </h5>
+                <h5 class="company__item__location space row">
+                    <img class="company__item__location__img" src="../../../../../assets/page/location.png"
+                        srcset="../../../../../assets/page/location.png">
+                    <span class="company__item__location__title">{{company.location}}</span>
+                </h5>
+            </div>
+            <div class="center column">
+                <h5 class="company__item__field__title">Fields</h5>
+                <ul class="company__item__field" *ngFor="let field of company.fields.slice(0, 3)">
+                    <li class="company__item__field__text">{{field}}</li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+    <pagination class="space"
+        [startPage]="page.startPage"
+        [previousPage]="page.previousPage"
+        [currentPage]="page.currentPage"
+        [nextPage]="page.nextPage"
+        [lastPage]="page.lastPage"
+        (pageChange)="onPageChange($event)">
+    </pagination>
+
+</article>

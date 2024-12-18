@@ -1,0 +1,135 @@
+.company{
+    margin: 6.4rem 1rem .5rem 1rem;
+    padding: 0;
+    display: grid;
+    position: relative;
+
+    &__title{
+        font-size: 2.6rem;
+        text-align: center;
+    }
+    &__subtitle{
+        font-size: 2rem;
+        text-align: center;
+    }
+    &__location{
+        border-radius: .75rem;
+        background-color: #f5f5f5;
+        font-size: 1.4rem;
+
+        &__select{
+            gap: 1rem;
+            font-size: 1.4rem;
+            border-radius: .75rem;
+            padding: 1rem;
+            background-color: #f5f5f5;
+            transition: .5s;
+
+            &:hover{
+                color: #000;
+                background-color: #fafafa;
+                border-radius: .75rem .75rem 0 0;
+            }
+            &__img{
+                width: 1.4rem;
+            }
+        }
+    }
+
+    &__item{
+        padding: 1rem;
+        border: .1rem solid #000000F0;
+        border-radius: .75rem;
+
+        &__header, &__content{
+            display: grid;
+            grid-template-columns: repeat(2, .5fr);
+            align-items: center;
+        }
+
+        &__title{
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        &__profile{
+            font-size: 1.4rem;
+        }
+
+        &__link{
+            padding: 0.5rem;
+            border-radius: .5rem;
+            text-decoration: none;
+            background-color: #f5f5f5;
+            color: #000000F0;
+            transition: .5s;
+            font-weight: 600;
+
+            &:hover{
+                background-color: #fafafa;
+                color: #000;
+            }
+        }
+
+        &__rating{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 0.5rem;
+            font-size: 1.4rem;
+
+            &__title{
+                font-weight: bold;
+            }
+            &__mark{
+                font-weight: normal;
+            }
+        }
+
+        &__location{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 0.5rem;
+            font-size: 1.4rem;
+            justify-content: center;
+            align-items: center;
+
+            &__img{
+                width: 1.4rem;
+            }
+            &__title{
+                font-weight: normal;
+            }
+        }
+
+        &__field{
+            font-size: 1.2rem;
+            &__other{
+                background-color: #f5f5f5;
+            }
+            &__title{
+                font-size: 1.4rem;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+}
+
+.space{
+    margin: .5rem 0;
+}

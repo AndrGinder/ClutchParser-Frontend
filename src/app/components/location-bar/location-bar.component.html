@@ -1,0 +1,11 @@
+<ul class="location-bar">
+    <li *ngFor="let item of links; let last = last" [routerLink]="route" 
+        [queryParams]="{ link : item.link }" (click)="onPageChange(item.link)"
+        class="location-bar__item" [ngClass]="{ 'location-bar__item__last': last }">
+        <img class="location-bar__img" 
+        [src]="item.img">
+        <div class="location-bar__link">
+            {{item.name}}
+        </div>
+    </li>
+</ul>

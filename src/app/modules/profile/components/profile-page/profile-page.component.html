@@ -1,0 +1,102 @@
+<navbar></navbar>
+
+<article class="profile" *ngIf="page">
+
+    <h1 class="profile__title space">{{page.title}}</h1>
+
+    <h3 class="profile__location row center space">
+        <img class="profile__location__img"
+            src="../../../../../assets/page/location.png" srcset="../../../../../assets/page/location.png">
+        <span class="profile__location__text">
+            {{page.location}}
+        </span>
+    </h3>
+    <div class="review space">
+
+        <h2 class="review__title">Reviews</h2>
+
+        <div class="review__item space" *ngFor="let review of page.reviews">
+            <h4 class="review__item__header">
+                {{review.name}}
+            </h4>
+            <div class="review__item__content">
+                <div class="review__rating column">
+                    <div class="review__rating__summary center row">
+                        <h5 class="review__rating__title">Mark</h5>
+                        <p class="review__rating__mark">{{review.reviewMark}}</p>
+                    </div>
+                    <div class="review__rating__full">
+                        <div class="review__rating__full__block row center space">
+                            <h5 class="review__rating__title">Quality</h5>
+                            <p class="review__rating__mark">{{review.qualityMark}}</p>
+                        </div>
+                        <div class="review__rating__full__block row center space">
+                            <h5 class="review__rating__title">Schedule</h5>
+                            <p class="review__rating__mark">{{review.scheduleMark}}</p>
+                        </div>
+                        <div class="review__rating__full__block row center space">
+                            <h5 class="review__rating__title">Cost</h5>
+                            <p class="review__rating__mark">{{review.costMark}}</p>
+                        </div>
+                        <div class="review__rating__full__block row center space">
+                            <h5 class="review__rating__title">Willing to Refer</h5>
+                            <p class="review__rating__mark">{{review.willingToReferMark}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review__author column">
+                    <div class="review__author__title">
+                        <h5>Reviewer</h5>
+                        <h6>{{review.reviewerPosition}}</h6>
+                    </div>
+                    <div class="review__author__person center column">
+                        <img class="review__author__avatar center" 
+                            src="../../../../../assets/page/person.png" srcset="../../../../../assets/page/person.png">
+                        <span class="review__author__name">
+                            {{review.reviewerPerson}}
+                        </span>
+                    </div>
+                    <div class="row center">
+                        <img class="review__author__img" 
+                            src="../../../../../assets/page/field.png" srcset="../../../../../assets/page/field.png">
+                        <span class="review__author__text">
+                            {{review.reviewerField}}
+                        </span>
+                    </div>
+                    <div class="row center">
+                        <img class="review__author__img" 
+                            src="../../../../../assets/page/field.png" srcset="../../../../../assets/page/location.png">
+                        <span class="review__author__text">
+                            {{review.reviewerLoc}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary -->
+            <div class="review__summary space">
+                <div class="review__summary__content">
+                    <h4 class="review__summary__title">Project Summary</h4>
+                    <p class="review__summary__text">{{review.projectSummary}}</p>
+                </div>
+                <div class="review__summary__content">
+                    <h4 class="review__summary__title">Feedback Summary</h4>
+                    <p class="review__summary__text">{{review.feedbackSummary}}</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <pagination class="space"
+        [startPage]="page.startPage"
+        [previousPage]="page.previousPage"
+        [currentPage]="page.currentPage"
+        [nextPage]="page.nextPage"
+        [lastPage]="page.lastPage"
+        (pageChange)="onPageChange($event)">
+    </pagination>
+    
+</article>
+
+

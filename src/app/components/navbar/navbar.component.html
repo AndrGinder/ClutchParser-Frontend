@@ -1,0 +1,26 @@
+<header class="header">
+    <ul class="nav">
+        <li class="nav__item">
+            <a class="nav__link" [routerLink]="homeRoute">
+                <span>Clutch</span>
+            </a>
+        </li>
+        <li class="nav__item">
+            <a class="nav__link" 
+                [routerLink]="companyRoute"
+                [queryParams]="{
+                    link : dotnetLink 
+                }"
+                (click)="onPageChange(dotnetLink)">
+                .NET
+            </a>
+        </li>
+        <li class="nav__item">
+            <a class="nav__link" 
+            [routerLink]="companyRoute"
+            [queryParams]="{
+                link : ecomLink 
+            }" (click)="onPageChange(ecomLink)">Ecommerce</a>
+        </li>
+    </ul>
+</header>
