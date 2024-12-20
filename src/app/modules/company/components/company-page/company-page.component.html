@@ -2,8 +2,15 @@
 
 <article class="company" *ngIf="page">
 
-    <div *ngIf="sidebarVisible">
-        <company-sidebar class="company__sidebar" [locations]="locLinks"></company-sidebar>
+    <div *ngIf="sidebarVisible" class="company__sidebar">
+        <div class="row gap center space">
+            <h3 class="company__sidebar__title center">Company filter</h3>
+            <button class="close" (click)="onFilterClick()">
+                <img class="close__img" src="../../../../../assets/page/close.png" 
+                    srcset="../../../../../assets/page/close.png">
+            </button>
+        </div>
+        <company-sidebar [locations]="locLinks" [mark]="mark" (submit)="onPageChange($event)"></company-sidebar>
     </div>
 
     <div>
@@ -11,10 +18,10 @@
         <h1 class="company__title space">{{page.title}}</h1>
 
         <div class="space row center gap">
-            <div class="center column">
+            <!-- <div class="center column"> -->
 
                 <button (click)="onFilterClick()">Filter</button>
-                <div class="company__location">
+                <!-- <div class="company__location">
                     <a class="company__location__select center" (click)="onClickLocation()">
                         <span>Choose companies location</span>
                         <img *ngIf="!dropStatus" class="company__location__select__img" 
@@ -27,14 +34,14 @@
                     <ng-container *ngIf="dropStatus">
                         <locationBar [links]="locLinks" (pageChange)="onPageChange($event)"></locationBar>
                     </ng-container>
-                </div>
-            </div>
-            <div class="top column">
+                </div> -->
+            <!-- </div> -->
+            <!-- <div class="top column">
                 <filterBar class="company__mark center" 
                     [mark]="mark" 
                     (pageChange)="onPageChange($event)">
                 </filterBar>
-            </div>
+            </div> -->
         </div>
     
         <h2 class="company__subtitle space">

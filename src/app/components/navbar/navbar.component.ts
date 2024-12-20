@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { CompanyFilter } from 'src/app/models/companyFilter.model';
 
 @Component({
   selector: 'navbar',
@@ -13,6 +14,10 @@ export class NavbarComponent {
   @Output() pageChange = new EventEmitter<any>()
   
   public onPageChange(link: string){
-    this.pageChange.emit(link)
+    const params: CompanyFilter = {
+      link: link,
+      mark: 0
+    }
+    this.pageChange.emit(params)
   }
 }

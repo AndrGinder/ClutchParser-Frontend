@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CompanyFilter } from 'src/app/models/companyFilter.model';
 import { CompanyService } from 'src/app/services/company.service';
 
 @Component({
@@ -8,15 +9,17 @@ import { CompanyService } from 'src/app/services/company.service';
   styleUrls: ['./company-page.component.scss']
 })
 export class CompanyPageComponent implements OnInit{
-
-  profile = '/profile'
-  dotnet = 'https://clutch.co/developers?focus_areas=field_pp_fw_dot_net'
-  ecom = 'https://clutch.co/developers/ecommerce'
+  
   locLinks: any
   mark: number
 
   public dropStatus: boolean
   public sidebarVisible: boolean
+
+  public dotnet: string
+  public ecom: string
+  public profile
+
   public url: any
   public subtitle: any
   public page: any
@@ -24,7 +27,10 @@ export class CompanyPageComponent implements OnInit{
   constructor(private route: ActivatedRoute, private service: CompanyService){
     this.dropStatus = false
     this.sidebarVisible = false
-    this.mark = 0
+    this.mark = 1
+    this.dotnet = 'https://clutch.co/developers?focus_areas=field_pp_fw_dot_net'
+    this.ecom = 'https://clutch.co/developers/ecommerce'
+    this.profile = '/profile'
   }
 
   ngOnInit(): void {
@@ -37,19 +43,29 @@ export class CompanyPageComponent implements OnInit{
     this.sidebarVisible = false
   }
 
-  onPageChange(link: string, mark: number = 5) {
+  onPageChange(params: CompanyFilter) {
 
     this.dropStatus = false
+    this.sidebarVisible = false
+    console.log(params)
 
-    this.service.getPage(link, mark).subscribe(
-      data => this.page = data
+    this.service.getPage(params.link, params.mark).subscribe(
+      data => {
+        console.log(data)
+        this.page != data
+      }
     )
 
-    this.generateLinks(link)
+    this.generateLinks(params.link)
   }
 
   public onFilterClick(){
-    this.sidebarVisible = this.sidebarVisible ? false: true
+    if(this.sidebarVisible == true){
+      this.sidebarVisible = false
+    }
+    else if(this.sidebarVisible == false){
+      this.sidebarVisible = true
+    }
   }
 
   public onClickLocation(){
