@@ -1,0 +1,36 @@
+<form method="post" class="filter" [formGroup]="filterForm">
+    <input class="filter__mark" placeholder="Input maximum mark"
+        type="number" formControlName="mark">
+    <select class="filter__location" formControlName="location">
+        <div value="" disabled selected>Select company location</div>
+        <option *ngFor="let loc of locations; let last = last" 
+            [value]="loc.link" class="filter__location__item"
+            [ngClass]="{ 'filter__location__last': last }">
+            <div>
+                <img class="filter__location__img" [src]="loc.img">
+                <div class="filter__location__text">
+                    {{loc.name}}
+                </div>
+            </div>
+        </option>
+    </select>
+    <button type="submit" class="filter__btn">Filter</button>
+</form>
+
+<!-- <ul class="location-bar">
+    <li *ngFor="let item of links; let last = last" [routerLink]="route" 
+        [queryParams]="{ link : item.link }" (click)="onPageChange(item.link)"
+        class="location-bar__item" [ngClass]="{ 'location-bar__item__last': last }">
+        <img class="location-bar__img" 
+        [src]="item.img">
+        <div class="location-bar__link">
+            {{item.name}}
+        </div>
+    </li>
+</ul>[queryParams]="{ link : item.link }" (click)="onPageChange(item.link)"
+        class="location-bar__item" [ngClass]="{ 'location-bar__item__last': last }">
+        <img class="location-bar__img" 
+        [src]="item.img">
+        <div class="location-bar__link">
+            {{item.name}}
+        </div> --> -->

@@ -1,0 +1,42 @@
+.mark-bar{
+    border-radius: .75rem;
+    background-color: #f5f5f5;
+    font-size: 1.4rem;
+    margin: 0;
+    border: 0;
+
+    &__input{
+        border-radius: .75rem 0 0 .75rem;
+        background-color: #f5f5f5;
+        font-size: 1.4rem;
+        padding: 1rem .5rem;
+        text-align: center;
+        border: 0;
+
+        &:active, &:focus{
+            outline: 0;
+        }
+    }
+
+    &__divide{
+        width: .1rem;
+        background-color: #000000f5;
+        padding: 0;
+        margin: 0;
+    }
+
+    &__btn{
+        padding: 1rem;
+        font-size: 1.4rem;
+        border: 0;
+        border-radius: 0 .75rem .75rem 0;
+        background-color: #f5f5f5;
+        transition: .5s;
+
+        &:hover{
+            background-color: #fafafa;
+            color: #000;
+        }
+    }
+    
+}

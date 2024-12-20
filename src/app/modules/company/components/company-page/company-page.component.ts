@@ -12,14 +12,20 @@ export class CompanyPageComponent implements OnInit{
   profile = '/profile'
   dotnet = 'https://clutch.co/developers?focus_areas=field_pp_fw_dot_net'
   ecom = 'https://clutch.co/developers/ecommerce'
-  dropStatus: any
-  links: any
+  locLinks: any
+  mark: number
 
-  url: any
-  subtitle: any
-  page: any
+  public dropStatus: boolean
+  public sidebarVisible: boolean
+  public url: any
+  public subtitle: any
+  public page: any
 
-  constructor(private route: ActivatedRoute, private service: CompanyService){}
+  constructor(private route: ActivatedRoute, private service: CompanyService){
+    this.dropStatus = false
+    this.sidebarVisible = false
+    this.mark = 0
+  }
 
   ngOnInit(): void {
     this.route.queryParamMap.subscribe(params => this.url = params.get('link')!)
@@ -28,20 +34,25 @@ export class CompanyPageComponent implements OnInit{
     this.onPageChange(this.url)
 
     this.dropStatus = false
+    this.sidebarVisible = false
   }
 
-  onPageChange(link: string) {
+  onPageChange(link: string, mark: number = 5) {
 
     this.dropStatus = false
 
-    this.service.getPage(link).subscribe(
+    this.service.getPage(link, mark).subscribe(
       data => this.page = data
     )
 
     this.generateLinks(link)
   }
 
-  public onClickDropdown(){
+  public onFilterClick(){
+    this.sidebarVisible = this.sidebarVisible ? false: true
+  }
+
+  public onClickLocation(){
     if(this.dropStatus == true){
       this.dropStatus = false
     }
@@ -108,7 +119,7 @@ export class CompanyPageComponent implements OnInit{
     switch(field){
       case ecom:
         subtitleField = 'E-Commerce Development Firms'
-        this.links = [
+        this.locLinks = [
           {
             name: 'Denmark',
             link: 'https://clutch.co/dk/developers/ecommerce',
@@ -142,7 +153,7 @@ export class CompanyPageComponent implements OnInit{
         break
       case dotnet:
         subtitleField = 'Custom Software Development Companies'
-        this.links = [
+        this.locLinks = [
           {
             name: 'Denmark',
             link: 'https://clutch.co/dk/developers?focus_areas=field_pp_fw_dot_net',
