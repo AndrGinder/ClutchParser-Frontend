@@ -9,15 +9,11 @@ import { CompanyFilter } from 'src/app/models/companyFilter.model';
 export class NavbarComponent {
   public homeRoute: string = ''
   public companyRoute : string = '/company'
-  public dotnetLink: string = 'https://clutch.co/developers?focus_areas=field_pp_fw_dot_net'
-  public ecomLink: string = 'https://clutch.co/developers/ecommerce'
+  public dotnetLink: string = 'https://clutch.co/developers?focus_areas=field_pp_fw_dot_net&mark=5'
+  public ecomLink: string = 'https://clutch.co/developers/ecommerce?mark=5'
   @Output() pageChange = new EventEmitter<any>()
   
-  public onPageChange(link: string, mark: number){
-    const params: CompanyFilter = {
-      link: link,
-      mark: mark
-    }
-    this.pageChange.emit(params)
+  public onPageChange(link: string){
+    this.pageChange.emit(link)
   }
 }

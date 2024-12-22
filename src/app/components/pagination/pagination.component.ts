@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CompanyFilter } from 'src/app/models/companyFilter.model';
 
 @Component({
   selector: 'pagination',
@@ -6,6 +7,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent {
+  @Input() mark: any
   @Input() startPage: any
   @Input() previousPage: any
   @Input() currentPage: any

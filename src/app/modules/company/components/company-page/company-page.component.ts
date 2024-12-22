@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CompanyFilter } from 'src/app/models/companyFilter.model';
 import { CompanyService } from 'src/app/services/company.service';
 
 @Component({
@@ -34,6 +33,7 @@ export class CompanyPageComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    
     this.route.queryParamMap.subscribe(params => {
       this.url = params.get('link')!
       this.mark = Number(params.get('mark')!)
@@ -42,14 +42,14 @@ export class CompanyPageComponent implements OnInit{
     this.dropStatus = false
     this.sidebarVisible = false
 
-    this.generateLinks(this.url, this.mark)
-    this.onPageChange(this.url, this.mark)
+    this.generateLinks(this.url)
+    this.onPageChange(this.url)
   }
 
-  onPageChange(link: string, mark: number) {
+  onPageChange(link: string) {
     this.dropStatus = false
     this.sidebarVisible = false
-    this.service.getPage(link, mark).subscribe(data => this.page = data)
+    this.service.getPage(link).subscribe(data => this.page = data)
   }
 
   public onFilterClick(){
@@ -70,7 +70,7 @@ export class CompanyPageComponent implements OnInit{
     }
   }
 
-  private generateLinks(link: string, mark: number): any{
+  private generateLinks(link: string){
     const site = 'https://clutch.co'
     const dev = '/developers'
     const ecom = '/ecommerce'
@@ -131,31 +131,31 @@ export class CompanyPageComponent implements OnInit{
         this.locLinks = [
           {
             name: 'Denmark',
-            link: `https://clutch.co/dk/developers/ecommerce?mark=${mark}`,
+            link: `https://clutch.co/dk/developers/ecommerce?mark=${this.mark}`,
             img: '../../../assets/flags/denmark.png'
           }, {
             name: 'France',
-            link: 'https://clutch.co/fr/developers/ecommerce?',
+            link: `https://clutch.co/fr/developers/ecommerce?mark=${this.mark}`,
             img: '../../../assets/flags/france.png'
           }, {
             name: 'Netherlands',
-            link: 'https://clutch.co/nl/developers/ecommerce',
+            link: `https://clutch.co/nl/developers/ecommerce?mark=${this.mark}`,
             img: '../../../assets/flags/france.png'
           }, {
             name: 'Norway',
-            link: 'https://clutch.co/no/developers/ecommerce',
+            link: `https://clutch.co/no/developers/ecommerce?mark=${this.mark}`,
             img: '../../../assets/flags/norway.png'
           }, {
             name: 'Sweden',
-            link: 'https://clutch.co/se/developers/ecommerce',
+            link: `https://clutch.co/se/developers/ecommerce?mark=${this.mark}`,
             img: '../../../assets/flags/sweden.png'
           }, {
             name: 'Ukraine',
-            link: 'https://clutch.co/ua/developers/ecommerce',
+            link: `https://clutch.co/ua/developers/ecommerce?mark=${this.mark}`,
             img: '../../../assets/flags/ukraine.png'
           }, {
             name: 'United Kingdom',
-            link: 'https://clutch.co/developers/ecommerce/uk',
+            link: `https://clutch.co/developers/ecommerce/uk?mark=${this.mark}`,
             img: '../../../assets/flags/uk.png'
           },
         ]
@@ -165,31 +165,31 @@ export class CompanyPageComponent implements OnInit{
         this.locLinks = [
           {
             name: 'Denmark',
-            link: 'https://clutch.co/dk/developers?focus_areas=field_pp_fw_dot_net',
+            link: `https://clutch.co/dk/developers?focus_areas=field_pp_fw_dot_net&mark=${this.mark}`,
             img: '../../../assets/flags/denmark.png'
           }, {
             name: 'France',
-            link: 'https://clutch.co/fr/developers?focus_areas=field_pp_fw_dot_net',
+            link: `https://clutch.co/fr/developers?focus_areas=field_pp_fw_dot_net&mark=${this.mark}`,
             img: '../../../assets/flags/france.png'
           }, {
             name: 'Netherlands',
-            link: 'https://clutch.co/nl/developers?focus_areas=field_pp_fw_dot_net',
+            link: `https://clutch.co/nl/developers?focus_areas=field_pp_fw_dot_net&mark=${this.mark}`,
             img: '../../../assets/flags/france.png'
           }, {
             name: 'Norway',
-            link: 'https://clutch.co/no/developers?focus_areas=field_pp_fw_dot_net',
+            link: `https://clutch.co/no/developers?focus_areas=field_pp_fw_dot_net&mark=${this.mark}`,
             img: '../../../assets/flags/norway.png'
           }, {
             name: 'Sweden',
-            link: 'https://clutch.co/se/developers?focus_areas=field_pp_fw_dot_net',
+            link: `https://clutch.co/se/developers?focus_areas=field_pp_fw_dot_net&mark=${this.mark}`,
             img: '../../../assets/flags/sweden.png'
           }, {
             name: 'Ukraine',
-            link: 'https://clutch.co/developers/ukraine?focus_areas=field_pp_fw_dot_net',
+            link: `https://clutch.co/developers/ukraine?focus_areas=field_pp_fw_dot_net&mark=${this.mark}`,
             img: '../../../assets/flags/ukraine.png'
           }, {
             name: 'United Kingdom',
-            link: 'https://clutch.co/developers/uk?focus_areas=field_pp_fw_dot_net',
+            link: `https://clutch.co/developers/uk?focus_areas=field_pp_fw_dot_net&mark=${this.mark}`,
             img: '../../../assets/flags/uk.png'
           },
         ]

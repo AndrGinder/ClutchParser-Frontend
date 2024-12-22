@@ -13,9 +13,9 @@ export class CompanyService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  public getPage(url: string, mark: number): Observable<CompanyPage>{
+  public getPage(url: string): Observable<CompanyPage>{
     const data = this._httpClient.get<CompanyPage>(
-      `http://localhost:5000/api/company?url=${url}&mark=${mark}`,
+      `http://localhost:5000/api/company?url=${url}`,
     )
     return data
   }
