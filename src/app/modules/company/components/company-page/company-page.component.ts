@@ -34,29 +34,22 @@ export class CompanyPageComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.route.queryParamMap.subscribe(params => this.url = params.get('link')!)
-
-    this.generateLinks(this.url)
-    this.onPageChange(this.url)
+    this.route.queryParamMap.subscribe(params => {
+      this.url = params.get('link')!
+      this.mark = Number(params.get('mark')!)
+    })
 
     this.dropStatus = false
     this.sidebarVisible = false
+
+    this.generateLinks(this.url, this.mark)
+    this.onPageChange(this.url, this.mark)
   }
 
-  onPageChange(params: CompanyFilter) {
-
+  onPageChange(link: string, mark: number) {
     this.dropStatus = false
     this.sidebarVisible = false
-    console.log(params)
-
-    this.service.getPage(params.link, params.mark).subscribe(
-      data => {
-        console.log(data)
-        this.page != data
-      }
-    )
-
-    this.generateLinks(params.link)
+    this.service.getPage(link, mark).subscribe(data => this.page = data)
   }
 
   public onFilterClick(){
@@ -77,7 +70,7 @@ export class CompanyPageComponent implements OnInit{
     }
   }
 
-  private generateLinks(link: string): any{
+  private generateLinks(link: string, mark: number): any{
     const site = 'https://clutch.co'
     const dev = '/developers'
     const ecom = '/ecommerce'
@@ -138,11 +131,11 @@ export class CompanyPageComponent implements OnInit{
         this.locLinks = [
           {
             name: 'Denmark',
-            link: 'https://clutch.co/dk/developers/ecommerce',
+            link: `https://clutch.co/dk/developers/ecommerce?mark=${mark}`,
             img: '../../../assets/flags/denmark.png'
           }, {
             name: 'France',
-            link: 'https://clutch.co/fr/developers/ecommerce',
+            link: 'https://clutch.co/fr/developers/ecommerce?',
             img: '../../../assets/flags/france.png'
           }, {
             name: 'Netherlands',

@@ -9,9 +9,10 @@
             <a class="nav__link" 
                 [routerLink]="companyRoute"
                 [queryParams]="{
-                    link : dotnetLink 
+                    link : dotnetLink, 
+                    mark : 5, 
                 }"
-                (click)="onPageChange(dotnetLink)">
+                (click)="onPageChange(dotnetLink, 5)">
                 .NET
             </a>
         </li>
@@ -19,8 +20,9 @@
             <a class="nav__link" 
             [routerLink]="companyRoute"
             [queryParams]="{
-                link : ecomLink 
-            }" (click)="onPageChange(ecomLink)">Ecommerce</a>
+                link : ecomLink,
+                mark : 5, 
+            }" (click)="onPageChange(ecomLink, 5)">Ecommerce</a>
         </li>
     </ul>
 </header>

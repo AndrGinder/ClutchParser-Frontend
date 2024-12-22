@@ -13,10 +13,10 @@ export class NavbarComponent {
   public ecomLink: string = 'https://clutch.co/developers/ecommerce'
   @Output() pageChange = new EventEmitter<any>()
   
-  public onPageChange(link: string){
+  public onPageChange(link: string, mark: number){
     const params: CompanyFilter = {
       link: link,
-      mark: 0
+      mark: mark
     }
     this.pageChange.emit(params)
   }

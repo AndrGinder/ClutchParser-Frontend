@@ -1,4 +1,4 @@
-<navbar (pageChange)="onPageChange($event)"></navbar>
+<navbar (pageChange)="onPageChange($event, $event)"></navbar>
 
 <article class="company" *ngIf="page">
 
@@ -10,7 +10,7 @@
                     srcset="../../../../../assets/page/close.png">
             </button>
         </div>
-        <company-sidebar [locations]="locLinks" [mark]="mark" (submit)="onPageChange($event)"></company-sidebar>
+        <company-sidebar [locations]="locLinks" [mark]="mark" (submit)="onPageChange($event, $event)"></company-sidebar>
     </div>
 
     <div>
@@ -100,7 +100,7 @@
             [currentPage]="page.currentPage"
             [nextPage]="page.nextPage"
             [lastPage]="page.lastPage"
-            (pageChange)="onPageChange($event)">
+            (pageChange)="onPageChange($event, $event)">
         </pagination>
 
     </div>
