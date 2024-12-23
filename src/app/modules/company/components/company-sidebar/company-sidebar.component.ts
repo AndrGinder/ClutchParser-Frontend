@@ -64,8 +64,8 @@ export class CompanySidebarComponent {
       link = locVal + `?mark=${markVal}`
     } else if(locVal.includes('?focus_areas=field_pp_fw_dot_net')){
       link = locVal + `&mark=${markVal}`
-      this.submit.emit(locVal + `&mark=${markVal}`)
     }
+    this.submit.emit(link)
 
     this.url = link
     this.mark = markVal
@@ -73,7 +73,6 @@ export class CompanySidebarComponent {
     this.router.navigate([this.route], {
       queryParams: {
         link: link,
-        mark: markVal
       }
     });
     this.submit.emit(link)
