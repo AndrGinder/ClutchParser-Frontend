@@ -3,11 +3,10 @@
     <input class="filter__mark" placeholder="Input maximum mark"
         type="number" formControlName="mark" (input)="validateMark()">
     <select class="filter__location" formControlName="location">
-        <option class="filter__location__item" value="" selected>Select company location</option>
         <option *ngFor="let loc of locations; let last = last" 
             [value]="loc.link" class="filter__location__item"
             [ngClass]="{ 'filter__location__last': last }">
-                {{loc.name}}
+            {{loc.name}}
         </option>
     </select>
     <button type="submit" class="filter__btn">Filter</button>

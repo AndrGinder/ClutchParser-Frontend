@@ -19,30 +19,7 @@
         <h1 class="company__title space">{{page.title}}</h1>
 
         <div class="space row center gap">
-            <!-- <div class="center column"> -->
-
-                <button (click)="onFilterClick()">Filter</button>
-                <!-- <div class="company__location">
-                    <a class="company__location__select center" (click)="onClickLocation()">
-                        <span>Choose companies location</span>
-                        <img *ngIf="!dropStatus" class="company__location__select__img" 
-                            src="../../../assets/header/expand.png"
-                            srcset="../../../assets/header/expand.png">
-                        <img *ngIf="dropStatus" class="company__location__select__img"
-                            src="../../../assets/header/collapse.png"
-                            srcset="../../../assets/header/collapse.png">
-                    </a>
-                    <ng-container *ngIf="dropStatus">
-                        <locationBar [links]="locLinks" (pageChange)="onPageChange($event)"></locationBar>
-                    </ng-container>
-                </div> -->
-            <!-- </div> -->
-            <!-- <div class="top column">
-                <filterBar class="company__mark center" 
-                    [mark]="mark" 
-                    (pageChange)="onPageChange($event)">
-                </filterBar>
-            </div> -->
+            <button class="company__filter" (click)="onFilterClick()">Filter</button>
         </div>
     
         <h2 class="company__subtitle space">

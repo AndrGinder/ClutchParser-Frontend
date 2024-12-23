@@ -25,6 +25,13 @@ export class CompanySidebarComponent {
     this.submit = new EventEmitter<any>();
   }
 
+  ngOnInit(){
+    this.filterForm = this.fb.group({
+      mark: [this.mark, [Validators.required, Validators.min(1), Validators.max(5)]],
+      location: [this.locations[0]?.link, Validators.required]
+    });
+  }
+
   protected validateMark() {
     const mark = this.filterForm.get('mark');
     if (mark) {
@@ -39,7 +46,7 @@ export class CompanySidebarComponent {
   }
 
   public submitFilter() {
-    console.log(this.filterForm);
+    
     const mark = this.filterForm.get('mark');
     let markVal = 0;
     if (mark) {

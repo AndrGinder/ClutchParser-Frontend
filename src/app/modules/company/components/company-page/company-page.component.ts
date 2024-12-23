@@ -35,16 +35,13 @@ export class CompanyPageComponent implements OnInit{
     this.route.queryParamMap.subscribe(params => {
       this.url = params.get('link')!
     })
-    console.log(this.url)
     const link = this.url.replace(/\?mark=\d+/, '').replace(/\&mark=\d+/, '')
 
     this.mark = Number(this.url.replace(link + '?mark=' , '').replace(link + '&mark=' , ''))
-    console.log(this.mark)
 
     this.dropStatus = false
     this.sidebarVisible = false
 
-    console.log(this.mark)
     this.generateLinks(this.url)
     this.onPageChange(this.url)
   }
@@ -78,10 +75,12 @@ export class CompanyPageComponent implements OnInit{
     const dev = '/developers'
     const ecom = '/ecommerce'
     const dotnet = '?focus_areas=field_pp_fw_dot_net'
-    const loc = link.replace(site,'').replace(dev,'')
+
+    const loc = link.replace(site, '').replace(dev,' ')
       .replace(ecom,'').replace(dotnet,'')
-    const field = link.replace(site,'').replace(dev,'')
-      .replace(loc,'')
+      .replace(/\?mark=\d+/, '').replace(/\&mark=\d+/, '')
+    const field = link.replace(site, '').replace(loc, '').replace(dev, '')
+      .replace(/\?mark=\d+/, '').replace(/\&mark=\d+/, '')
 
     let country = ''
     switch(loc){
@@ -133,6 +132,10 @@ export class CompanyPageComponent implements OnInit{
         subtitleField = 'E-Commerce Development Firms'
         this.locLinks = [
           {
+            name: 'Select company location',
+            link: `https://clutch.co/dk/developers/ecommerce`,
+            img: ''
+          }, {
             name: 'Denmark',
             link: `https://clutch.co/dk/developers/ecommerce`,
             img: '../../../assets/flags/denmark.png'
@@ -167,6 +170,10 @@ export class CompanyPageComponent implements OnInit{
         subtitleField = 'Custom Software Development Companies'
         this.locLinks = [
           {
+            name: 'Select company location',
+            link: `https://clutch.co/dk/developers/ecommerce`,
+            img: ''
+          }, {
             name: 'Denmark',
             link: `https://clutch.co/dk/developers?focus_areas=field_pp_fw_dot_net`,
             img: '../../../assets/flags/denmark.png'
