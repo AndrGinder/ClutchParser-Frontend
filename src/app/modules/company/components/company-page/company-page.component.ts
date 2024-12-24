@@ -61,15 +61,6 @@ export class CompanyPageComponent implements OnInit{
     }
   }
 
-  public onClickLocation(){
-    if(this.dropStatus == true){
-      this.dropStatus = false
-    }
-    else if(this.dropStatus == false){
-      this.dropStatus = true
-    }
-  }
-
   private generateLinks(link: string){
     const site = 'https://clutch.co'
     const dev = '/developers'
@@ -133,7 +124,7 @@ export class CompanyPageComponent implements OnInit{
         this.locLinks = [
           {
             name: 'Select company location',
-            link: `https://clutch.co/dk/developers/ecommerce`,
+            link: `https://clutch.co/developers/ecommerce`,
             img: ''
           }, {
             name: 'Denmark',
@@ -171,7 +162,7 @@ export class CompanyPageComponent implements OnInit{
         this.locLinks = [
           {
             name: 'Select company location',
-            link: `https://clutch.co/dk/developers/ecommerce`,
+            link: `https://clutch.co/developers?focus_areas=field_pp_fw_dot_net`,
             img: ''
           }, {
             name: 'Denmark',

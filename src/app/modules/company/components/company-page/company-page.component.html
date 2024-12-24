@@ -34,14 +34,22 @@
                 <h4 class="company__item__title">
                     {{company.name}}
                 </h4>
-                <div class="company__item__profile center">
-                    <a class="company__item__link" 
-                        [routerLink]='profile' 
-                        [queryParams]="{
-                            link: company.profileLink 
-                        }">
-                        View Profile
-                    </a>
+                <div class="row gap center">
+                    <div class="company__item__profile center">
+                        <a class="company__item__link"
+                            href="{{company.website}}">
+                            Visit Website
+                        </a>
+                    </div>
+                    <div class="company__item__profile center">
+                        <a class="company__item__link" 
+                            [routerLink]='profile' 
+                            [queryParams]="{
+                                link: company.profileLink 
+                            }">
+                            View Profile
+                        </a>
+                    </div>
                 </div>
             </div>
     
