@@ -1,4 +1,5 @@
-<navbar (pageChange)="onPageChange($event)"></navbar>
+<navbar (pageChange)="onPageChange($event)" 
+    [dotnetLink]="dotnet" [ecomLink]="ecom"></navbar>
 
 <article class="company" *ngIf="page">
 
@@ -35,7 +36,8 @@
                     {{company.name}}
                 </h4>
                 <div class="row gap center">
-                    <div class="company__item__profile center">
+                    <div class="company__item__profile center"
+                        *ngIf="company.website !== ''">
                         <a class="company__item__link"
                             href="{{company.website}}">
                             Visit Website

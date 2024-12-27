@@ -9,31 +9,28 @@ import { CompanyService } from 'src/app/services/company.service';
 })
 export class CompanyPageComponent implements OnInit{
 
-  public dropStatus: boolean
-  public sidebarVisible: boolean
+  public dropStatus: boolean = false
+  public sidebarVisible: boolean = false
 
-  public dotnet: any
+  public dotnet: string = 'https://clutch.co/developers?focus_areas=field_pp_fw_dot_net&mark=5'
   public ecom: any
-  public profile
+  public profile = '/profile'
   public locLinks: any
   public mark: any
 
   public url: any
+  public pageNumber: any
   public subtitle: any
   public page: any
 
-  constructor(private route: ActivatedRoute, private service: CompanyService){
-    this.dropStatus = false
-    this.sidebarVisible = false
-    this.dotnet = 'https://clutch.co/developers?focus_areas=field_pp_fw_dot_net&mark=5'
-    this.ecom = 'https://clutch.co/developers/ecommerce?mark=5'
-    this.profile = '/profile'
-  }
+  constructor(private route: ActivatedRoute, private service: CompanyService){}
 
   ngOnInit(): void {
     
     this.route.queryParamMap.subscribe(params => {
       this.url = params.get('link')!
+      this.pageNumber = params.get('page')!
+      this.mark = params.get('mark')!
     })
     const link = this.url.replace(/\?mark=\d+/, '').replace(/\&mark=\d+/, '')
 
@@ -72,47 +69,49 @@ export class CompanyPageComponent implements OnInit{
       .replace(/\?mark=\d+/, '').replace(/\&mark=\d+/, '')
     const field = link.replace(site, '').replace(loc, '').replace(dev, '')
       .replace(/\?mark=\d+/, '').replace(/\&mark=\d+/, '')
+    console.log(field)
 
     let country = ''
     switch(loc){
       case '/dk':
-        this.dotnet = site + loc + dev + dotnet
-        this.ecom = site + loc + dev + ecom
+        this.dotnet = `${site}${loc}${dev}${dotnet}&mark=${this.mark}`
+        this.ecom = `${site}${loc}${dev}${ecom}&mark=${this.mark}`
         country = 'Denmark'
         break
       case '/fr':
-        this.dotnet = site + loc + dev + dotnet
-        this.ecom = site + loc + dev + ecom
+        this.dotnet = `${site}${loc}${dev}${dotnet}&mark=${this.mark}`
+        this.ecom = `${site}${loc}${dev}${ecom}&mark=${this.mark}`
         country = 'France'
         break
       case '/nl':
-        this.dotnet = site + loc + dev + dotnet
-        this.ecom = site + loc + dev + ecom
+        this.dotnet = `${site}${loc}${dev}${dotnet}&mark=${this.mark}`
+        this.ecom = `${site}${loc}${dev}${ecom}&mark=${this.mark}`
         country = 'Netherlands'
         break
       case '/no':
-        this.dotnet = site + loc + dev + dotnet
-        this.ecom = site + loc + dev + ecom
+        this.dotnet = `${site}${loc}${dev}${dotnet}&mark=${this.mark}`
+        this.ecom = `${site}${loc}${dev}${ecom}&mark=${this.mark}`
         country = 'Norway'
         break
       case '/se':
-        this.dotnet = site + loc + dev + dotnet
-        this.ecom = site + loc + dev + ecom
+        this.dotnet = `${site}${loc}${dev}${dotnet}&mark=${this.mark}`
+        this.ecom = `${site}${loc}${dev}${ecom}&mark=${this.mark}`
         country = 'Sweden'
         break
       case '/ukraine':
-        this.dotnet = site + dev + loc + dotnet
-        this.ecom = site + '/ua' + dev + ecom
+      case '/ua':
+        this.dotnet = `${site}${loc}${dev}${dotnet}&mark=${this.mark}`
+        this.ecom = `${site}/ua${dev}${ecom}&mark=${this.mark}`
         country = 'Ukraine'
         break
       case '/uk':
-        this.dotnet = site + dev + loc + dotnet
-        this.ecom = site + dev + loc + ecom
+        this.dotnet = `${site}${dev}${loc}${dotnet}&mark=${this.mark}`
+        this.ecom = `${site}${dev}${loc}${ecom}&mark=${this.mark}`
         country = 'United Kingdom'
         break
       default: 
-        this.dotnet = site + loc + dev + dotnet
-        this.ecom = site + loc + dev + ecom
+        this.dotnet = `${site}${dev}${dotnet}&mark=${this.mark}`
+        this.ecom = `${site}${dev}${ecom}&mark=${this.mark}`
         break
     }
 
