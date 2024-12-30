@@ -8,14 +8,14 @@
         <label for="filter__reviewed">Include not reviewed companies</label>
     </div>
     <select class="filter__location" formControlName="location">
-        <ng-container *ngFor="let loc of locations; let first = first">
-            <option *ngIf="loc === first" selected
-                [value]="loc.link" class="filter__location__item">
-                {{loc.name}}
+        <ng-container *ngFor="let location of locations; let first = first">
+            <option *ngIf="location === first" selected
+                [value]="location.link" class="filter__location__item">
+                {{location.name}}
             </option>
-            <option *ngIf="loc !== first"
-                [value]="loc.link" class="filter__location__item">
-                {{loc.name}}
+            <option *ngIf="location !== first"
+                [value]="location.link" class="filter__location__item">
+                {{location.name}}
             </option>
         </ng-container>
     </select>

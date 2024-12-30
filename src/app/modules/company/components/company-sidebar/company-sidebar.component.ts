@@ -9,27 +9,23 @@ import { Router } from '@angular/router';
 })
 export class CompanySidebarComponent {
 
-  public route: string;
-  public filterForm: FormGroup;
-  @Input() locations: any;
-  @Input() mark: any;
-  @Input() url: any;
-  @Output() submit: EventEmitter<any>;
+  public route: string = '/company'
+  public filterForm: FormGroup = this.fb.group({})
+  public locations: any
 
-  constructor(private fb: FormBuilder, private router: Router) {
-    this.route = '/company';
-    this.filterForm = this.fb.group({
-      mark: [5, [Validators.required, Validators.min(1), Validators.max(5)]],
-      location: ['', Validators.required]
-    });
-    this.submit = new EventEmitter<any>();
-  }
+  @Input() mark: any
+  @Input() url: string = ''
+  @Input() reviewed: boolean = false
+  @Output() submit: EventEmitter<any> = new EventEmitter<any>()
+
+  constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(){
+    this.generateLinks()
     this.filterForm = this.fb.group({
       mark: [this.mark, [Validators.required, Validators.min(1), Validators.max(5)]],
-      location: [this.locations[0]?.link, Validators.required]
-    });
+      location: [this.locations[0]!.link, Validators.required]
+    })
   }
 
   protected validateMark() {
@@ -48,24 +44,15 @@ export class CompanySidebarComponent {
   public submitFilter() {
     
     const mark = this.filterForm.get('mark');
-    let markVal = 0;
-    if (mark) {
-      markVal = mark.value;
-    }
+    const markVal = mark ? mark.value : 0;
 
     const location = this.filterForm.get('location');
-    let locVal = this.url;
-    if (location && location.value !== '') {
-      locVal = location.value;
-    }
+    const locVal = location && location.value !== '' 
+      ? location.value 
+      : this.url
 
-    let link: any
-    if(locVal.includes('/ecommerce')){
-      link = locVal + `?mark=${markVal}`
-    } else if(locVal.includes('?focus_areas=field_pp_fw_dot_net')){
-      link = locVal + `&mark=${markVal}`
-    }
-    this.submit.emit(link)
+    const pageParam = locVal.includes('?') ? '&' : '?'
+    const link = `${locVal}${pageParam}mark=${markVal}`
 
     this.url = link
     this.mark = markVal
@@ -76,6 +63,76 @@ export class CompanySidebarComponent {
       }
     });
     this.submit.emit(link)
+  }
+
+  private generateLinks(){
+    const site = 'https://clutch.co'
+    const dev = '/developers'
+    const ecom = '/ecommerce'
+    const dotnet = '?focus_areas=field_pp_fw_dot_net'
+
+    const loc = this.url.replace(site, '').replace(dev,' ')
+      .replace(ecom,'').replace(dotnet,'')
+      .replace(/\?mark=\d+/, '').replace(/\&mark=\d+/, '')
+    const field = this.url.replace(site, '').replace(loc, '').replace(dev, '')
+      .replace(/\?mark=\d+/, '').replace(/\&mark=\d+/, '')
+
+    switch(field){
+      case ecom:
+        this.locations = [{
+            name: 'Select company location',
+            link: `https://clutch.co/developers/ecommerce`,
+          }, {
+            name: 'Denmark',
+            link: `https://clutch.co/dk/developers/ecommerce`,
+          }, {
+            name: 'France',
+            link: `https://clutch.co/fr/developers/ecommerce`,
+          }, {
+            name: 'Netherlands',
+            link: `https://clutch.co/nl/developers/ecommerce`,
+          }, {
+            name: 'Norway',
+            link: `https://clutch.co/no/developers/ecommerce`,
+          }, {
+            name: 'Sweden',
+            link: `https://clutch.co/se/developers/ecommerce`,
+          }, {
+            name: 'Ukraine',
+            link: `https://clutch.co/ua/developers/ecommerce`,
+          }, {
+            name: 'United Kingdom',
+            link: `https://clutch.co/developers/ecommerce/uk`,
+          },
+        ]; break
+      case dotnet:
+        this.locations = [{
+            name: 'Select company location',
+            link: `https://clutch.co/developers?focus_areas=field_pp_fw_dot_net`,
+          }, {
+            name: 'Denmark',
+            link: `https://clutch.co/dk/developers?focus_areas=field_pp_fw_dot_net`,
+          }, {
+            name: 'France',
+            link: `https://clutch.co/fr/developers?focus_areas=field_pp_fw_dot_net`,
+          }, {
+            name: 'Netherlands',
+            link: `https://clutch.co/nl/developers?focus_areas=field_pp_fw_dot_net`,
+          }, {
+            name: 'Norway',
+            link: `https://clutch.co/no/developers?focus_areas=field_pp_fw_dot_net`,
+          }, {
+            name: 'Sweden',
+            link: `https://clutch.co/se/developers?focus_areas=field_pp_fw_dot_net`,
+          }, {
+            name: 'Ukraine',
+            link: `https://clutch.co/developers/ukraine?focus_areas=field_pp_fw_dot_net`,
+          }, {
+            name: 'United Kingdom',
+            link: `https://clutch.co/developers/uk?focus_areas=field_pp_fw_dot_net`,
+          },
+        ]; break
+    }
   }
 
 }
