@@ -14,7 +14,6 @@ export class CompanyPageComponent implements OnInit{
 
   public dotnet: string = 'https://clutch.co/developers?focus_areas=field_pp_fw_dot_net&mark=5'
   public ecom: any
-  public profile = '/profile'
   public locLinks: any
   public mark: any
 

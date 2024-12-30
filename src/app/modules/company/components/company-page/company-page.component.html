@@ -22,64 +22,16 @@
         <div class="space row center gap">
             <button class="company__filter" (click)="onFilterClick()">Filter</button>
         </div>
-    
         <h2 class="company__subtitle space">
             {{subtitle}}
         </h2>
     
-        <div>
-            
+        <div *ngIf="page.companies.length > 0">
+            <company-list [companies]="page.companies"></company-list>
         </div>
-        <div class="company__item space" *ngFor="let company of page.companies"> 
-            <div class="company__item__header space">
-                <h4 class="company__item__title">
-                    {{company.name}}
-                </h4>
-                <div class="row gap center">
-                    <div class="company__item__profile center"
-                        *ngIf="company.website !== ''">
-                        <a class="company__item__link"
-                            href="{{company.website}}">
-                            Visit Website
-                        </a>
-                    </div>
-                    <div class="company__item__profile center">
-                        <a class="company__item__link" 
-                            [routerLink]='profile' 
-                            [queryParams]="{
-                                link: company.profileLink 
-                            }">
-                            View Profile
-                        </a>
-                    </div>
-                </div>
-            </div>
-    
-            <div class="company__item__content space">
-                <div class="center column">
-                    <h5 class="company__item__rating space row">
-                        <ng-container *ngIf="company.mark > 0">
-                            <span class="company__item__rating__title">Mark</span>
-                            <span class="company__item__rating__mark">{{company.mark}}</span>
-                        </ng-container>
-                        <ng-container *ngIf="company.mark == 0">
-                            <span class="company__item__rating__title">Not yet reviewed</span>
-                        </ng-container>
-                    </h5>
-                    <h5 class="company__item__location space row">
-                        <img class="company__item__location__img" src="../../../../../assets/page/location.png"
-                            srcset="../../../../../assets/page/location.png">
-                        <span class="company__item__location__title">{{company.location}}</span>
-                    </h5>
-                </div>
-                <div class="center column">
-                    <h5 class="company__item__field__title">Fields</h5>
-                    <ul class="company__item__field" *ngFor="let field of company.fields.slice(0, 3)">
-                        <li class="company__item__field__text">{{field}}</li>
-                    </ul>
-                </div>
-            </div>
-            
+
+        <div *ngIf="page.companies.length === 0">
+            <company-not-found></company-not-found>
         </div>
         
         <pagination class="space"

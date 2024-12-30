@@ -4,16 +4,16 @@ import { CompanyPageComponent } from './components/company-page/company-page.com
 import { CompanyRoutingModule } from './company-routing.module';
 import { LayoutModule } from '../layout/layout.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
-import { LocationBarComponent } from './components/location-bar/location-bar.component';
 import { CompanySidebarComponent } from './components/company-sidebar/company-sidebar.component';
+import { CompanyListComponent } from './components/company-list/company-list.component';
+import { CompanyNotFoundComponent } from './components/company-not-found/company-not-found.component';
 
 @NgModule({
   declarations: [
     CompanyPageComponent,
-    LocationBarComponent,
-    FilterBarComponent,
     CompanySidebarComponent,
+    CompanyListComponent,
+    CompanyNotFoundComponent
   ],
   imports: [
     CommonModule,

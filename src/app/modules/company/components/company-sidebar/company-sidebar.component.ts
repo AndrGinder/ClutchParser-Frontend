@@ -19,7 +19,7 @@ export class CompanySidebarComponent {
   constructor(private fb: FormBuilder, private router: Router) {
     this.route = '/company';
     this.filterForm = this.fb.group({
-      mark: [1, [Validators.required, Validators.min(1), Validators.max(5)]],
+      mark: [5, [Validators.required, Validators.min(1), Validators.max(5)]],
       location: ['', Validators.required]
     });
     this.submit = new EventEmitter<any>();

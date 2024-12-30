@@ -76,3 +76,22 @@
         }
     }
 }
+
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+.gap{
+    gap: 1rem;
+}
+
+.space{
+    margin: 0 0 .5rem 0;
+}
+
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

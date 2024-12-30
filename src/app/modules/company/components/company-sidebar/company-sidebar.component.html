@@ -2,12 +2,22 @@
     [formGroup]="filterForm" (submit)="submitFilter()">
     <input class="filter__mark" placeholder="Input maximum mark"
         type="number" formControlName="mark" (input)="validateMark()">
+    <div class="row gap center space">
+        <input type="checkbox" class="filter__reviewed"
+            value="Include not reviewed companies">
+        <label for="filter__reviewed">Include not reviewed companies</label>
+    </div>
     <select class="filter__location" formControlName="location">
-        <option *ngFor="let loc of locations; let last = last" 
-            [value]="loc.link" class="filter__location__item"
-            [ngClass]="{ 'filter__location__last': last }">
-            {{loc.name}}
-        </option>
+        <ng-container *ngFor="let loc of locations; let first = first">
+            <option *ngIf="loc === first" selected
+                [value]="loc.link" class="filter__location__item">
+                {{loc.name}}
+            </option>
+            <option *ngIf="loc !== first"
+                [value]="loc.link" class="filter__location__item">
+                {{loc.name}}
+            </option>
+        </ng-container>
     </select>
     <button type="submit" class="filter__btn">Filter</button>
 </form>
